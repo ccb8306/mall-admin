@@ -1,6 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
-<%
+<!-- 
+	/*addCategory.jsp*/
+	
+	카테고리 추가 페이지.
+	
+	카테고리 이름을 넣고 추가버튼을 누르면 addCategoryAction.jsp페이지로 이동
+ -->
+<%	
+	// 비정상적인 접근시
 	if(session.getAttribute("loginAdminId") == null){
 		response.sendRedirect(request.getContextPath() + "/login.jsp");	
 		return;

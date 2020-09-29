@@ -3,7 +3,16 @@
 <%@ page import="dao.*" %>
 <%@ page import="vo.*" %>
 <%@ page import="java.util.*" %>
+<!-- 
+	/*updateProduct.jsp*/
+	
+	productOne.jsp에서 수정버튼으로 올 수 있는
+	상품 내용 수정 페이지.
+	
+	상품의 내용을 수정 후 수정버튼을 누르면 updateProductAction.jsp페이지로 이동
+ -->
 <%
+	// 비정상적인 접근시
 	if(session.getAttribute("loginAdminId") == null){
 		response.sendRedirect(request.getContextPath() + "/login.jsp");
 		return;
@@ -27,7 +36,7 @@
 			<jsp:include page="/inc/menu.jsp"></jsp:include>
 		</div>
 		
-		<!-- 자바 -->
+		<!-- jsp -->
 		<%
 			request.setCharacterEncoding("utf-8");
 		

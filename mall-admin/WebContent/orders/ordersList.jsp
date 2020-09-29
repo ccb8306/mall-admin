@@ -3,7 +3,18 @@
 <%@ page import="vo.*" %>
 <%@ page import="dao.*" %>
 <%@ page import="java.util.*" %>
+<!-- 
+	/*ordersList.jsp*/
+	
+	모든 회원들의 주문내역을 출력해주며
+	
+	주문 상태에 따라 정렬 가능
+	
+	주문 한개 클릭시 주문상태를 수정할 수 있는
+	modifyOrdersState.jsp페이지로 이동
+ -->
 <%
+	// 비정상적인 접근시
 	if(session.getAttribute("loginAdminId") == null){
 		response.sendRedirect(request.getContextPath() + "/login.jsp");	
 		return;
@@ -27,9 +38,9 @@
 		<%
 			request.setCharacterEncoding("utf-8");
 		
-			int currentPage = 1;
-			int rowPage = 10;
-			int endPage = 1;
+			int currentPage = 1; // 현재 페이지
+			int rowPage = 10;	// 한 페이지당 출력 개수
+			int endPage = 1;	// 최대 페이지
 			
 			// 현재페이지 값 받기
 			if(request.getParameter("currentPage") != null){

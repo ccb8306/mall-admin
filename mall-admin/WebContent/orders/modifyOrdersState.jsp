@@ -3,7 +3,17 @@
 <%@ page import="dao.*" %>
 <%@ page import="vo.*" %>
 <%@ page import="java.util.*" %>
+<!-- 
+	/*modifyOrdersState.jsp*/
+	
+	ordersList.jsp에서 한 주문 선택 시 올 수 있는
+	주문 상태 수정 페이지.
+	
+	주문상태를 변경 할 수 있으며 변경후 수정버튼을 누르면
+	modifyOrdersStateAction.jsp페이지로 이동
+ -->
 <%
+	// 비정상적인 접근시
 	if(session.getAttribute("loginAdminId") == null){
 		response.sendRedirect(request.getContextPath() + "/login.jsp");	
 		return;
@@ -27,7 +37,7 @@
 		</div>
 		<br><br>
 		
-		<!-- 자바 -->
+		<!-- jsp -->
 		<%
 			request.setCharacterEncoding("utf-8");
 			
@@ -81,6 +91,8 @@
 					</td>
 				</tr>
 			</table>
+			
+			<!-- 네비게이션 -->
 			<ul class="pagination">
 				<li class="page-item"><a class="page-link" href="<%=request.getContextPath() %>/orders/ordersList.jsp">목록</a></li>
 			</ul>

@@ -3,7 +3,16 @@
 <%@ page import="dao.*" %>
 <%@ page import="vo.*" %>
 <%@ page import="java.util.*" %>
+<!-- 
+	/*addOrders.jsp*/
+	
+	ordersList.jsp에서 주문 추가버튼으로 올 수 있는 페이지
+	
+	주문을 추가하는 페이지이며
+	주문 추가시 addOrdersAction.jsp페이지로 이동
+ -->
 <%
+	// 비정상적인 접근시
 	if(session.getAttribute("loginAdminId") == null){
 		response.sendRedirect(request.getContextPath() + "/login.jsp");	
 		return;
@@ -47,7 +56,7 @@
 						<div class="input-group-prepend">	
 							<select style="width:40%" class="form-control" id="sel1" name="productId">
 								<%
-									// 선택 상품과 가격을 출력 - Action으로 보낼시 상품 id와 상품 가격 두개를 보내줌
+									// 선택 상품과 가격을 함께출력 - Action으로 보낼시 상품 id와 상품 가격 두개를 보내줌
 									for(Product p : productList){
 										
 										// 품절이 아닌 상품만 선택 항목에 추가

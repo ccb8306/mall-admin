@@ -3,7 +3,19 @@
 <%@ page import="dao.*" %>
 <%@ page import="vo.*" %>
 <%@ page import="java.util.*" %>
+<!-- 
+	/*categoryList.jsp*/
+	
+	카테고리 목록들을 출력해주는 페이지.
+	
+	카테고리마다 이름과 사진을 수정하거나 삭제 할 수 있는 페이지로 이동 가능
+	이름 수정시 updateCategory.jsp 페이지로 이동
+	사진 수정시 modifyCategory.jsp 페이지로 이동
+	삭제시 deleteCategoryAction.jsp 페이지로 이동
+	
+ -->
 <%
+	// 비정상적인 접근시 
 	if(session.getAttribute("loginAdminId") == null){
 		response.sendRedirect(request.getContextPath() + "/login.jsp");	
 		return;
@@ -26,7 +38,7 @@
 			<jsp:include page="/inc/menu.jsp"></jsp:include>
 		</div>
 				
-		<!-- 자바 -->
+		<!-- jsp -->
 		<%
 			int currentPage = 1; // 현재 페이지
 			int endPage = 1; // 마지막 페이지

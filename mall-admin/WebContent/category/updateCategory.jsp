@@ -3,7 +3,17 @@
 <%@ page import="dao.*" %>
 <%@ page import="vo.*" %>
 <%@ page import="java.util.*" %>
+<!-- 
+	/*updateCategory.jsp*/
+	
+	categoryList.jsp에서 한 카테고리 수정을 누르면 오는 페이지.
+	해당 카테고리를 수정 할 수 있으며 수정 버튼을 누르면
+	updateCategoryAction.jsp페이지로 이동.
+	
+	취소버튼을 누르면 categoryList.jsp로 이동
+ -->
 <%
+	// 비정상적인 접근 시
 	if(session.getAttribute("loginAdminId") == null){
 		response.sendRedirect(request.getContextPath() + "/login.jsp");	
 		return;
@@ -22,11 +32,12 @@
 </head>
 <body>
 	<div class="container form-group">
+		<!-- 메뉴바 -->
 		<div>
 			<jsp:include page="/inc/menu.jsp"></jsp:include><br><br>
 		</div>
 		
-		<!-- 자바 -->
+		<!-- jsp -->
 		<%
 			int currentPage = 1; // 현재 페이지
 			int endPage = 0; // 마지막 페이지

@@ -1,6 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<!-- 
+	/*modifyCategoryPic.jsp*/
+	
+	categoryList.jsp에서 사진 수정 버튼을 누르면 오는 페이지
+	카테고리의 사진을 수정할 수 있는 페이지.
+	
+	파일 선택으로 사진을 불러올 수 있으며 불러온 후 수정버튼을 누르면
+	modifyCategoryPicAction.jsp페이지로 이동
+ -->
 <%
+	// 비정상적인 접근시
 	if(session.getAttribute("loginAdminId") == null){
 		response.sendRedirect(request.getContextPath() + "/login.jsp");	
 		return;

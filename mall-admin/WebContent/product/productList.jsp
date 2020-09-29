@@ -2,7 +2,22 @@
 <%@ page import="vo.*" %>
 <%@ page import="dao.*" %>
 <%@ page import="java.util.*" %>
+<!-- 
+	/*productList.jsp*/
+	
+	상품 목록들을 출력해주는 페이지.
+	
+	상단에 카테고리들을 출력하고
+	하단에 상품들을 출력해줌
+	
+	상단에있는 카테고리 선택시
+	하단에 선택한 카테고리에 존재하는 상품들만 출력.
+	
+	상품을 검색할 수 있으며 
+	상품 클릭시 productOne.jsp페이지로 이동하여 상품 상세보기 가능
+ -->
 <%
+	// 비정상적인 접근시
 	if(session.getAttribute("loginAdminId") == null){
 		response.sendRedirect(request.getContextPath() + "/login.jsp");
 		return;
@@ -17,11 +32,12 @@
 </head>
 <body>
 	<div class="container">
+		<!-- 메뉴바 -->
 		<div>
 			<jsp:include page="/inc/menu.jsp"></jsp:include><br><br>
 		</div>
 		
-		<!-- 자바 -->
+		<!-- jsp -->
 		<%
 			int currentPage = 1; // 현재 페이지
 			int rowPage = 10; // 한 페이지당 출력 개수
@@ -65,7 +81,7 @@
 			}
 		%>
 		
-		<!-- 카테고리 -->
+		<!-- 카테고리 출력 -->
 		<table class="table">
 			<thead class="thead-light">
 				<tr>
@@ -125,6 +141,7 @@
 			<tbody>
 				<%
 					for(ProductAndCategory pc : productList){
+						// 품절된 상품일시
 						if(pc.getProduct().getProductSoldout().equals("Y")){
 				%>
 						<tr style="color:red">
@@ -136,6 +153,7 @@
 							<td><del>품절</del></td>
 						</tr>	
 				<%
+						// 판매중인 상품일시
 						}else{
 				%>
 						<tr>
@@ -158,12 +176,13 @@
 		<!-- 상품 검색 -->
 		<form method="post" action="<%=request.getContextPath() %>/product/productList.jsp">
 			<div class="input-group mb-3">
-				<input type="text" class="form-control" name="searchProductName" placeholder="Serach Product Name" value="<%=searchProductName%>">
+				<input type="text" class="form-control" name="searchProductName" placeholder="Search Product Name" value="<%=searchProductName%>">
 				<div class="input-group-prepend">	
 					<button class="btn btn-outline-primary" type="submit">상품 이름 검색</button>
 				</div>
 			</div>
 		</form>
+		
 		<!-- 페이징 -->
 		<ul class="pagination">
 			<%

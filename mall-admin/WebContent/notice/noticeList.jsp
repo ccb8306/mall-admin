@@ -3,7 +3,16 @@
 <%@ page import="vo.*" %>
 <%@ page import="dao.*" %>
 <%@ page import="java.util.*" %>
+<!-- 
+	/*noticeList.jsp*/
+	
+	공지사항 목록을 출력해주는 페이지.
+	
+	공지사항 작성 클릭시 addNotice.jsp로 이동하여 공지사항 추가 가능
+	공지사항 선택시 noticeOne.jsp페이지로 이동하여 공지사항을 상세볼 수 있음
+ -->
 <%
+	// 비정상적인 접근시
 	if(session.getAttribute("loginAdminId") == null){
 		response.sendRedirect(request.getContextPath() + "/login.jsp");	
 		return;
@@ -27,9 +36,9 @@
 		<%
 			request.setCharacterEncoding("utf-8");
 		
-			int currentPage = 1;
-			int rowPage = 10;
-			int endPage = 1;
+			int currentPage = 1; // 현재 페이지
+			int rowPage = 10;	// 한 페이지당 출력 개수
+			int endPage = 1;	// 최대 페이지
 			String searchNotice = "";
 			
 			// 현재페이지 값 받기
@@ -98,7 +107,7 @@
 		<!-- 상품 검색 -->
 		<form method="post" action="<%=request.getContextPath() %>/notice/noticeList.jsp">
 			<div class="input-group mb-3">
-				<input type="text" class="form-control" name="searchNotice" placeholder="Serach Notice Title" value="<%=searchNotice%>">
+				<input type="text" class="form-control" name="searchNotice" placeholder="Search Notice Title" value="<%=searchNotice%>">
 				<div class="input-group-prepend">	
 					<button class="btn btn-outline-primary" type="submit">공지사항 검색</button>
 				</div>

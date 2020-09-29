@@ -3,7 +3,16 @@
 <%@ page import="dao.*" %>
 <%@ page import="vo.*" %>
 <%@ page import="java.util.*" %>
+<!-- 
+	/*memberOne.jsp*/
+	
+	memberList.jsp에서 한 회원 클릭 시 
+	해당 회원의 정보를 자세히 보여주며
+	
+	회원의 정보를 수정 가능한 modifyMember.jsp페이지로 이동 가능한 버튼이 있음.
+ -->
 <%
+	// 비정상적인 접근시
 	request.setCharacterEncoding("UTF-8");
 
 	if(session.getAttribute("loginAdminId") == null){
@@ -61,10 +70,12 @@
 				<th>상태 : </th>
 				<td class="tdContent">		
 						<%
+							// 활동중이면
 							if(m.getMemberState().equals("Y")){
 						%>
 							활동중
 						<%
+							// 탈퇴회원이면
 							}else{
 						%>
 							탈퇴

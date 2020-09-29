@@ -1,6 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<!-- 
+	/*modifyProductPic.jsp*/
+	
+	productOne.jsp에서 이미지 수정 버튼으로 올 수 있는
+	이미지 수정 페이지
+	이미지 한개를 선택할 수 있고
+	수정 버튼 클릭시 modifyProductPicAction.jsp페이지로 이동
+ -->
 <%
+	// 비정상적인 접근시
 	if(session.getAttribute("loginAdminId") == null){
 		response.sendRedirect(request.getContextPath() + "/login.jsp");
 		return;
@@ -20,6 +29,7 @@
 			<jsp:include page="/inc/menu.jsp"></jsp:include><br><br>
 		</div>
 		
+		<!-- jsp -->
 		<%
 			int productId = Integer.parseInt(request.getParameter("productId"));		
 		%>

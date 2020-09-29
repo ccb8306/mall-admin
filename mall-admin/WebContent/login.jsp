@@ -1,6 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
+<!-- 
+	/*login.jsp*/
+	
+	관리자 페이지 접속을 위해 제일 먼저 거쳐야 하는 로그인 페이지
+	
+	로그인 버튼 클릭시 loginAction.jsp페이지로 이동
+ -->
 <%
+	// 비정상적인 접근시
 	if(session.getAttribute("loginAdminId") != null){
 		response.sendRedirect(request.getContextPath() + "/login.jsp");
 		return;
@@ -26,11 +34,11 @@
 			<table class="table">
 				<tr>
 					<td style="width:20%">관리자ID : </td>
-					<td><input type="text" name="adminId" class="form-control"></td>
+					<td><input type="text" name="adminId" class="form-control" value="admin@goodee.com"></td>
 				</tr>
 				<tr>
 					<td>관리자PW : </td>
-					<td><input type="password" name="adminPw" class="form-control"></td>
+					<td><input type="password" name="adminPw" class="form-control" value="1234"></td>
 				</tr>
 			</table>
 			<button style="width:30%" class="btn btn-outline-primary" type="submit">로그인</button>

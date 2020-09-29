@@ -3,7 +3,20 @@
 <%@ page import="dao.*" %>
 <%@ page import="vo.*" %>
 <%@ page import="java.util.*" %>
+<!-- 
+	/*productOne.jsp*/
+	
+	productList.jsp에서 상품 선택시
+	해당상품을 상세 보는 페이지.
+	
+	해당 상품의 이미지 수정, 상태 수정, 내용 수정, 삭제가 가능하며
+	이미지 수정시 modifyProductPic.jsp 페이지로 이동,
+	상태 수정시 modifyProductSoldoutAction.jsp 페이지로 이동, 
+	내용 수정시 updateProduct.jsp 페이지로 이동,
+	삭제시 deleteProduct.jsp 페이지로 이동함
+ -->
 <%
+	// 비정상적인 접근시 
 	if(session.getAttribute("loginAdminId") == null){
 		response.sendRedirect(request.getContextPath() + "/login.jsp");
 		return;
@@ -27,7 +40,7 @@
 		</div>
 		<br><br>
 		
-		<!-- 자바 -->
+		<!-- jsp -->
 		<%
 			request.setCharacterEncoding("utf-8");
 		

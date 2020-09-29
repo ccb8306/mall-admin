@@ -3,7 +3,17 @@
 <%@ page import="dao.*" %>
 <%@ page import="vo.*" %>
 <%@ page import="java.util.*" %>
+<!-- 
+	/*modifyNotice.jsp*/
+	
+	noticeOne.jsp에서 수정버튼으로 올 수 있는 페이지
+	해당 공지사항의 내용을 다 불러와
+	수정 할 수 있게 출력해줌.
+	
+	수정 버튼 클릭시 modifyNoticeAction.jsp 페이지로 이동
+ -->
 <%
+	// 비정상적인 접근시
 	if(session.getAttribute("loginAdminId") == null){
 		response.sendRedirect(request.getContextPath() + "/login.jsp");	
 		return;
@@ -30,6 +40,7 @@
 		<%
 			request.setCharacterEncoding("utf-8");
 			
+			// 수정할 공지사항 id
 			int noticeId = Integer.parseInt(request.getParameter("noticeId"));
 
 			NoticeDao noticeDao = new NoticeDao();

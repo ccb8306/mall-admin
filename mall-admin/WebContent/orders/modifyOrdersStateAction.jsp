@@ -1,17 +1,21 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import="vo.*" %>
 <%@ page import="dao.*" %>
+<!-- 
+	/*modifyOrdersStateAction.jsp*/
+	
+	modifyOrdersState.jsp에서 수정버튼으로 오는 액션 페이지.
+	해당 주문내역을 입력한 state값으로 수정해줌
+	
+	수정후 modifyOrdersState.jsp로 이동
+ -->
 <%
-
+	// 비정상적인 접근시
 	if(session.getAttribute("loginAdminId") == null){
 		response.sendRedirect(request.getContextPath() + "/login.jsp");	
 		return;
 	}
 
-	/*
-	주문 수정 액션
-	주문내역에서 주문 상태만 수정 가능
-	*/
 	request.setCharacterEncoding("utf-8");
 
 	int ordersId = Integer.parseInt(request.getParameter("ordersId")); // 주문 id

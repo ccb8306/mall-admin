@@ -1,7 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
 <%@ page import="dao.*" %>
 <%@ page import="vo.*" %>
+<!-- 
+	/*addCategoryAction.jsp*/
+	
+	addCategory.jsp에서 추가 버튼을 누르면 올 수 있는 액션 페이지
+	
+	카테고리 이름을 넘겨받고 db에 저장한 뒤 categoryList.jsp로 이동
+ -->
 <%
+	// 비정상적인 접근시
 	if(session.getAttribute("loginAdminId") == null){
 		response.sendRedirect(request.getContextPath() + "/login.jsp");	
 		return;

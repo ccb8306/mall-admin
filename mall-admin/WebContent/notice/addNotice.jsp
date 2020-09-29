@@ -3,7 +3,16 @@
 <%@ page import="dao.*" %>
 <%@ page import="vo.*" %>
 <%@ page import="java.util.*" %>
+<!-- 
+	/*addNotice.jsp*/
+	
+	noticeList.jsp에서 공지사항 추가 버튼을 통해서 올 수 있는 페이지.
+	공지사항을 추가 할 수 있음.
+	
+	내용 입력 후 작성 버튼을 누르면 addNoticeAction.jsp페이지로 이동
+ -->
 <%
+	// 비정상적인 접근 시
 	if(session.getAttribute("loginAdminId") == null){
 		response.sendRedirect(request.getContextPath() + "/login.jsp");	
 		return;

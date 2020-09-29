@@ -3,7 +3,20 @@
 <%@ page import="dao.*" %>
 <%@ page import="vo.*" %>
 <%@ page import="java.util.*" %>
+<!-- 
+	/*noticeOne.jsp*/
+	
+	noticeList.jsp에서 한 공지사항 클릭시 오는
+	공지사항 상세보기 페이지.
+	
+	공지사항을 수정,삭제 하는 페이지로 이동할 수 있으며
+	공지사항 제목 검색이 가능함.
+	
+	공지사항 수정시 modifyNotice.jsp페이지로 이동
+	공지시항 삭제시 deleteNoticeAction.jsp페이지로 이동
+ -->
 <%
+	// 비정상적인 접근시
 	if(session.getAttribute("loginAdminId") == null){
 		response.sendRedirect(request.getContextPath() + "/login.jsp");	
 		return;
@@ -27,7 +40,7 @@
 		</div>
 		<br><br>
 		
-		<!-- 자바 -->
+		<!-- jsp -->
 		<%
 			request.setCharacterEncoding("utf-8");
 		

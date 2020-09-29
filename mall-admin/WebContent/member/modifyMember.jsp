@@ -3,7 +3,20 @@
 <%@ page import="dao.*" %>
 <%@ page import="vo.*" %>
 <%@ page import="java.util.*" %>
+<!-- 
+	/*modifyMember.jsp*/
+	
+	memberOne.jsp에서 수정버튼으로 올 수 있는 페이지.
+	
+	한 회원의 이름을 수정하거나 상태를 변경 할 수 있음.
+	
+	회원상태 수정은 토글버튼으로 클릭시, 활동중 -> 탈퇴로, 탈퇴 -> 활동중 으로 변경 가능
+	
+	모든 수정사항은 수정버튼을 눌러야 적용되며
+	수정버튼 클릭시 modifyMemberAction.jsp페이지로 이동
+ -->
 <%
+	// 비정상적인 접근시
 	if(session.getAttribute("loginAdminId") == null){
 		response.sendRedirect(request.getContextPath() + "/login.jsp");	
 		return;

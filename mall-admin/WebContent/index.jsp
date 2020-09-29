@@ -1,5 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
+<!-- 
+	/*index.jsp*/
+	
+	Goodee Shop의 데이터들을 관리할 수 있는 관리자 페이지
+ -->
 <%
+	// 비정상적인 접근시
 	if(session.getAttribute("loginAdminId") == null){
 		response.sendRedirect(request.getContextPath() + "/login.jsp");
 		return;
@@ -13,13 +19,18 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 <body>	
+<!-- Main -->
 <div class="jumbotron text-center" style="margin-bottom:0">
   <h1><a style="color:black" href="/mall/index.jsp">Goodee Shop</a></h1>
   <h1>Admin Main Page</h1><br><br>
   <p>- 본 페이지는 쇼핑몰 사이트 관리를 위한 관리자 전용 페이지 입니다. -</p>
 </div>
+
+<!-- 메뉴바 -->
 <jsp:include page="/inc/menu.jsp"></jsp:include>
 <br><br>
+
+<!-- 내용 -->
 <div class="container">
 	<div class="row">
 	    <div class="col-sm-4">

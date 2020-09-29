@@ -3,7 +3,16 @@
 <%@ page import="dao.*" %>
 <%@ page import="vo.*" %>
 <%@ page import="java.util.*" %>
+<!-- 
+	/*addProduct.jsp*/
+	
+	productList.jsp에 있는 상품 추가 버튼으로
+	올 수 있는 상품 추가 페이지.
+	
+	상품 정보를 입력 한 후 추가 버튼을 누르면 addProductAction.jsp페이지로 이동
+ -->
 <%
+	// 비정상적인 접근시
 	if(session.getAttribute("loginAdminId") == null){
 		response.sendRedirect(request.getContextPath() + "/login.jsp");
 		return;
@@ -18,11 +27,12 @@
 </head>
 <body>
 	<div class="container form-group">
+		<!-- 메뉴바 -->
 		<div>
 			<jsp:include page="/inc/menu.jsp"></jsp:include>
 		</div>
 		
-		<!-- 자바 -->
+		<!-- jsp -->
 		<%
 			request.setCharacterEncoding("utf-8");
 			

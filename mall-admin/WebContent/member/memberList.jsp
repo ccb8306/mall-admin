@@ -3,7 +3,18 @@
 <%@ page import="vo.*" %>
 <%@ page import="dao.*" %>
 <%@ page import="java.util.*" %>
+<!-- 
+	/*memberList.jsp*/
+	
+	회원 리스트를 출력해주는 페이지.
+	
+	한 회원을 상세 볼 수 있거나 이메일 검색으로 회원을 찾을 수 있음.
+	
+	회원 클릭시 memberOne.jsp페이지로 이동 하여 상세보기 가능
+	
+ -->
 <%
+	// 비정상적인 접근시.
 	if(session.getAttribute("loginAdminId") == null){
 		response.sendRedirect(request.getContextPath() + "/login.jsp");	
 		return;
@@ -27,11 +38,11 @@
 		<%
 			request.setCharacterEncoding("utf-8");
 		
-			int currentPage = 1;
-			int rowPage = 10;
-			int endPage = 1;
-			String searchOption = "";
-			String searchMember = "";
+			int currentPage = 1; // 현재페이지
+			int rowPage = 10;	// 한 페이지당 출력 개수
+			int endPage = 1;	// 최대 페이지
+			String searchOption = "";	// 검색 옵션
+			String searchMember = "";	// 검색 키워드
 			// 현재페이지 값 받기
 			if(request.getParameter("currentPage") != null){
 				currentPage = Integer.parseInt(request.getParameter("currentPage"));
@@ -134,7 +145,7 @@
 							}
 						%>value="email">이메일</option>
 				</select>
-				<input type="text" class="form-control" name="searchMember" placeholder="Serach Member" value="<%=searchMember%>">
+				<input type="text" class="form-control" name="searchMember" placeholder="Search Member" value="<%=searchMember%>">
 				<div class="input-group-prepend">	
 					<button class="btn btn-outline-primary" type="submit">회원 검색</button>
 				</div>
