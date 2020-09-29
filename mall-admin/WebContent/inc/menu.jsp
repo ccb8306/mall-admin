@@ -32,7 +32,7 @@
 						<a class="nav-link"><%=session.getAttribute("loginAdminId") %>님 반갑습니다.</a>
 					</li>
 					<li class="nav-item active">
-						<a class="nav-link" data-toggle="tab" href="/mall-admin/logoutAction.jsp">[Log out]</a>
+						<a class="nav-link" data-toggle="tab" href="<%=request.getContextPath() %>/logoutAction.jsp">[Log out]</a>
 					</li>
 				</ul>
 			</nav>

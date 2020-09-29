@@ -5,7 +5,7 @@
 <%@ page import="java.util.*" %>
 <%
 	if(session.getAttribute("loginAdminId") == null){
-		response.sendRedirect("/mall-admin/login.jsp");	
+		response.sendRedirect(request.getContextPath() + "/login.jsp");	
 		return;
 	}
 %>
@@ -66,7 +66,7 @@
 				</tr>
 				<tr>
 					<th style="text-align:middle">
-						<a style="background-color:white; width:35%" class="page-link" href="/mall-admin/orders/addOrders.jsp">[주문내역 추가하기]</a>
+						<a style="background-color:white; width:35%" class="page-link" href="<%=request.getContextPath() %>/orders/addOrders.jsp">[주문내역 추가하기]</a>
 					</th>
 					<th style="text-align:right">
 						<form method="post" action="/mall-admin/orders/ordersList.jsp">
@@ -127,7 +127,7 @@
 					<td><%=op.getOrders().getOrdersAddr() %></td>
 					<td><%=op.getOrders().getOrdersState() %></td>
 					<td><%=op.getOrders().getOrdersDate() %></td>
-					<td><a href="/mall-admin/orders/modifyOrdersState.jsp?ordersId=<%=op.getOrders().getOrdersId()%>">수정</a></td>
+					<td><a href="<%=request.getContextPath() %>/orders/modifyOrdersState.jsp?ordersId=<%=op.getOrders().getOrdersId()%>">수정</a></td>
 				</tr>
 				<%
 					}
@@ -141,14 +141,14 @@
 				// 현재 페이지가 1페이지 보다 클 시
 				if(currentPage > 1){
 			%>
-					<li class="page-item"><a class="page-link" href="/mall-admin/orders/ordersList.jsp?ordersState=<%=ordersState %>&currentPage=1">처음</a></li>
-					<li class="page-item"><a class="page-link" href="/mall-admin/orders/ordersList.jsp?ordersState=<%=ordersState %>&currentPage=<%=currentPage-1 %>">이전</a></li>
+					<li class="page-item"><a class="page-link" href="<%=request.getContextPath() %>/orders/ordersList.jsp?ordersState=<%=ordersState %>&currentPage=1">처음</a></li>
+					<li class="page-item"><a class="page-link" href="<%=request.getContextPath() %>/orders/ordersList.jsp?ordersState=<%=ordersState %>&currentPage=<%=currentPage-1 %>">이전</a></li>
 			<%
 				// 현재 페이지가 1페이지 일 시
 				}else{
 			%>
-					<li class="page-item disabled"><a class="page-link" href="/mall-admin/orders/ordersList.jsp?ordersState=<%=ordersState %>&currentPage=1">처음</a></li>
-					<li class="page-item disabled"><a class="page-link" href="/mall-admin/orders/ordersList.jsp?ordersState=<%=ordersState %>&currentPage=<%=currentPage-1 %>">이전</a></li>
+					<li class="page-item disabled"><a class="page-link" href="<%=request.getContextPath() %>/orders/ordersList.jsp?ordersState=<%=ordersState %>&currentPage=1">처음</a></li>
+					<li class="page-item disabled"><a class="page-link" href="<%=request.getContextPath() %>/orders/ordersList.jsp?ordersState=<%=ordersState %>&currentPage=<%=currentPage-1 %>">이전</a></li>
 			<%
 				}// 현재 페이지
 			%>
@@ -157,14 +157,14 @@
 				// 현재 페이지가 마지막 페이지보다 작을 시
 				if(currentPage < endPage){
 			%>
-					<li class="page-item"><a class="page-link" href="/mall-admin/orders/ordersList.jsp?ordersState=<%=ordersState %>&currentPage=<%=currentPage+1 %>">다음</a></li>
-					<li class="page-item"><a class="page-link" href="/mall-admin/orders/ordersList.jsp?ordersState=<%=ordersState %>&currentPage=<%=endPage %>">맨끝</a></li>
+					<li class="page-item"><a class="page-link" href="<%=request.getContextPath() %>/orders/ordersList.jsp?ordersState=<%=ordersState %>&currentPage=<%=currentPage+1 %>">다음</a></li>
+					<li class="page-item"><a class="page-link" href="<%=request.getContextPath() %>/orders/ordersList.jsp?ordersState=<%=ordersState %>&currentPage=<%=endPage %>">맨끝</a></li>
 			<%
 				// 현재 페이지가 마지막 페이지 일 시
 				}else{
 			%>
-					<li class="page-item disabled"><a class="page-link" href="/mall-admin/orders/ordersList.jsp?ordersState=<%=ordersState %>&currentPage=<%=currentPage+1 %>">다음</a></li>
-					<li class="page-item disabled"><a class="page-link" href="/mall-admin/orders/ordersList.jsp?ordersState=<%=ordersState %>&currentPage=<%=endPage %>">맨끝</a></li>
+					<li class="page-item disabled"><a class="page-link" href="<%=request.getContextPath() %>/orders/ordersList.jsp?ordersState=<%=ordersState %>&currentPage=<%=currentPage+1 %>">다음</a></li>
+					<li class="page-item disabled"><a class="page-link" href="<%=request.getContextPath() %>/orders/ordersList.jsp?ordersState=<%=ordersState %>&currentPage=<%=endPage %>">맨끝</a></li>
 			<%
 				}
 			%>	

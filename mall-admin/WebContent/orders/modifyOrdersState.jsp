@@ -5,7 +5,7 @@
 <%@ page import="java.util.*" %>
 <%
 	if(session.getAttribute("loginAdminId") == null){
-		response.sendRedirect("/mall-admin/login.jsp");	
+		response.sendRedirect(request.getContextPath() + "/login.jsp");	
 		return;
 	}
 %>
@@ -49,7 +49,7 @@
 		</table>	
 		
 		<!-- 주문상태 수정 폼 -->	
-		<form action="/mall-admin/orders/modifyOrdersStateAction.jsp" method="post">
+		<form action="<%=request.getContextPath() %>/orders/modifyOrdersStateAction.jsp" method="post">
 			<table class="table table-bordered">
 				<tr>
 					<th>주문 ID : </th>
@@ -82,7 +82,7 @@
 				</tr>
 			</table>
 			<ul class="pagination">
-				<li class="page-item"><a class="page-link" href="/mall-admin/orders/ordersList.jsp">목록</a></li>
+				<li class="page-item"><a class="page-link" href="<%=request.getContextPath() %>/orders/ordersList.jsp">목록</a></li>
 			</ul>
 		</form>
 	</div>

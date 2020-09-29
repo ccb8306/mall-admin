@@ -4,7 +4,7 @@
 <%
 
 	if(session.getAttribute("loginAdminId") == null){
-		response.sendRedirect("/mall-admin/login.jsp");	
+		response.sendRedirect(request.getContextPath() + "/login.jsp");	
 		return;
 	}
 
@@ -27,5 +27,5 @@
 	ordersDao.updateOrdersState(o);
 	
 	// 이전 페이지로 복귀
-	response.sendRedirect("/mall-admin/orders/modifyOrdersState.jsp?ordersId=" + ordersId);
+	response.sendRedirect(request.getContextPath() + "/orders/modifyOrdersState.jsp?ordersId=" + ordersId);
 %>

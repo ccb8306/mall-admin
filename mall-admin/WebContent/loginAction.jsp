@@ -17,14 +17,14 @@
 	// 로그인 실패
 	if(loginAdmin == null){
 		System.out.println("로그인 실패");
-		response.sendRedirect("/mall-admin/login.jsp");
+		response.sendRedirect(request.getContextPath() + "/login.jsp");
 	}
 	// 로그인 성공
 	else{
 		System.out.println("로그인 성공");
 		// 로그인 성공시 로그인 정보를 session에 저장 
 		session.setAttribute("loginAdminId", loginAdmin.getAdminId());
-		response.sendRedirect("/mall-admin/index.jsp");
+		response.sendRedirect(request.getContextPath() + "/index.jsp");
 	}
 	
 %>

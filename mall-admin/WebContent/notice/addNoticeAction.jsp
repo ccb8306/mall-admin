@@ -3,7 +3,7 @@
 <%@ page import="vo.*" %>
 <%
 	if(session.getAttribute("loginAdminId") == null){
-		response.sendRedirect("/mall-admin/login.jsp");	
+		response.sendRedirect(request.getContextPath() + "/login.jsp");		
 		return;
 	}
 
@@ -19,5 +19,5 @@
 	NoticeDao noticeDao = new NoticeDao();
 	noticeDao.insertNotice(notice);
 	
-	response.sendRedirect("/mall-admin/notice/noticeList.jsp");
+	response.sendRedirect(request.getContextPath() + "/notice/noticeList.jsp");
 %>

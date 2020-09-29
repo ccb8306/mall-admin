@@ -2,7 +2,7 @@
     pageEncoding="utf-8"%>
 <%
 	if(session.getAttribute("loginAdminId") == null){
-		response.sendRedirect("/mall-admin/login.jsp");	
+		response.sendRedirect(request.getContextPath() + "/login.jsp");	
 		return;
 	}
 %>

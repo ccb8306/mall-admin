@@ -4,7 +4,7 @@
 <%@ page import="java.util.*" %>
 <%
 	if(session.getAttribute("loginAdminId") == null){
-		response.sendRedirect("/mall-admin/login.jsp");	
+		response.sendRedirect(request.getContextPath() + "/login.jsp");
 		return;
 	}
 %>
@@ -75,7 +75,7 @@
 		</table>
 		<table class="table">
 			<tr>
-				<td><a href="/mall-admin/product/productList.jsp">[-전체보기-]</a>	</td>
+				<td><a href="<%=request.getContextPath() %>/product/productList.jsp">[-전체보기-]</a>	</td>
 			</tr>
 			<tr>
 				<%
@@ -83,7 +83,7 @@
 					for(Category c : categoryList){
 						i++;
 				%>
-							<td><a href="/mall-admin/product/productList.jsp?categoryId=<%=c.getCategoryId() %>">[<%=c.getCategoryName() %>]</a></td>
+							<td><a href="<%=request.getContextPath() %>/product/productList.jsp?categoryId=<%=c.getCategoryId() %>">[<%=c.getCategoryName() %>]</a></td>
 				<%	
 						if(i%7 == 0){
 				%>
@@ -104,7 +104,7 @@
 					<th>
 						<ul class="pagination" >	
 							<li class="page-item">
-								<a style="background-color:#white" class="page-link" href="/mall-admin/product/addProduct.jsp">[상품 추가하기]</a>
+								<a style="background-color:#white" class="page-link" href="<%=request.getContextPath() %>/product/addProduct.jsp">[상품 추가하기]</a>
 							</li>
 						</ul>
 					</th>
@@ -128,7 +128,7 @@
 						if(pc.getProduct().getProductSoldout().equals("Y")){
 				%>
 						<tr style="color:red">
-							<td><a href="/mall-admin/product/productOne.jsp?productId=<%=pc.getProduct().getProductId()%>"><del><%=pc.getProduct().getProductId() %></del></a></td>
+							<td><a href="<%=request.getContextPath() %>/product/productOne.jsp?productId=<%=pc.getProduct().getProductId()%>"><del><%=pc.getProduct().getProductId() %></del></a></td>
 							<td><del><%=pc.getProduct().getCategoryId() %></del></td>
 							<td><del><%=pc.getCategory().getCategoryName() %></del></td>
 							<td><del><%=pc.getProduct().getProductName() %></del></td>
@@ -139,7 +139,7 @@
 						}else{
 				%>
 						<tr>
-							<td><a href="/mall-admin/product/productOne.jsp?productId=<%=pc.getProduct().getProductId()%>"><%=pc.getProduct().getProductId() %></a></td>
+							<td><a href="<%=request.getContextPath() %>/product/productOne.jsp?productId=<%=pc.getProduct().getProductId()%>"><%=pc.getProduct().getProductId() %></a></td>
 							<td><%=pc.getProduct().getCategoryId() %></td>
 							<td><%=pc.getCategory().getCategoryName() %></td>
 							<td><%=pc.getProduct().getProductName() %></td>
@@ -156,7 +156,7 @@
 		<br>
 		
 		<!-- 상품 검색 -->
-		<form method="post" action="/mall-admin/product/productList.jsp">
+		<form method="post" action="<%=request.getContextPath() %>/product/productList.jsp">
 			<div class="input-group mb-3">
 				<input type="text" class="form-control" name="searchProductName" placeholder="Serach Product Name" value="<%=searchProductName%>">
 				<div class="input-group-prepend">	

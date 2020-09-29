@@ -3,7 +3,7 @@
 <%@ page import="dao.*" %>
 <%
 	if(session.getAttribute("loginAdminId") == null){
-		response.sendRedirect("/mall-admin/login.jsp");	
+		response.sendRedirect(request.getContextPath() + "/login.jsp");
 		return;
 	}
 
@@ -13,5 +13,5 @@
 	ProductDao productDao = new ProductDao();
 	productDao.deleteProduct(productId);
 	
-	response.sendRedirect("/mall-admin/product/productList.jsp");
+	response.sendRedirect(request.getContextPath() + "/product/productList.jsp");
 %>

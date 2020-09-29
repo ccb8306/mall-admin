@@ -4,7 +4,7 @@
 <%
 
 	if(session.getAttribute("loginAdminId") == null){
-		response.sendRedirect("/mall-admin/login.jsp");	
+		response.sendRedirect(request.getContextPath() + "/login.jsp");	
 		return;
 	}
 
@@ -35,5 +35,5 @@
 	ordersDao.insertOrders(o);
 	
 	// 주문 리스트로 복귀
-	response.sendRedirect("/mall-admin/orders/ordersList.jsp");
+	response.sendRedirect(request.getContextPath() + "/orders/ordersList.jsp");
 %>

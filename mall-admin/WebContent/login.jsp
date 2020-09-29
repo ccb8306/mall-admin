@@ -2,7 +2,7 @@
     pageEncoding="EUC-KR"%>
 <%
 	if(session.getAttribute("loginAdminId") != null){
-		response.sendRedirect("/mall-admin/index.jsp");
+		response.sendRedirect(request.getContextPath() + "/login.jsp");
 		return;
 	}
 %>
@@ -22,7 +22,7 @@
 				</tr>
 			</thead>
 		</table>
-		<form method="post" action="/mall-admin/loginAction.jsp">
+		<form method="post" action="<%=request.getContextPath() %>/loginAction.jsp">
 			<table class="table">
 				<tr>
 					<td style="width:20%">°ü¸®ÀÚID : </td>

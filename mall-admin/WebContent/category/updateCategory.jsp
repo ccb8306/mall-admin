@@ -5,7 +5,7 @@
 <%@ page import="java.util.*" %>
 <%
 	if(session.getAttribute("loginAdminId") == null){
-		response.sendRedirect("/mall-admin/login.jsp");	
+		response.sendRedirect(request.getContextPath() + "/login.jsp");	
 		return;
 	}
 %>
@@ -97,14 +97,14 @@
 				// 현재 페이지가 1페이지 보다 클 시
 				if(currentPage > 1){
 			%>
-					<li class="page-item"><a class="page-link" href="/mall-admin/category/updateCategory.jsp?categoryId=<%=categoryId %>&currentPage=1">처음</a></li>
-					<li class="page-item"><a class="page-link" href="/mall-admin/category/updateCategory.jsp?categoryId=<%=categoryId %>&currentPage=<%=currentPage-1 %>">이전</a></li>
+					<li class="page-item"><a class="page-link" href="<%=request.getContextPath() %>/category/updateCategory.jsp?categoryId=<%=categoryId %>&currentPage=1">처음</a></li>
+					<li class="page-item"><a class="page-link" href="<%=request.getContextPath() %>/category/updateCategory.jsp?categoryId=<%=categoryId %>&currentPage=<%=currentPage-1 %>">이전</a></li>
 			<%
 				// 현재 페이지가 1페이지 일 시
 				}else{
 			%>
-					<li class="page-item disabled"><a class="page-link" href="/mall-admin/category/updateCategory.jsp?categoryId=<%=categoryId %>&currentPage=1">처음</a></li>
-					<li class="page-item disabled"><a class="page-link" href="/mall-admin/category/updateCategory.jsp?categoryId=<%=categoryId %>&currentPage=<%=currentPage-1 %>">이전</a></li>
+					<li class="page-item disabled"><a class="page-link" href="<%=request.getContextPath() %>/category/updateCategory.jsp?categoryId=<%=categoryId %>&currentPage=1">처음</a></li>
+					<li class="page-item disabled"><a class="page-link" href="<%=request.getContextPath() %>/category/updateCategory.jsp?categoryId=<%=categoryId %>&currentPage=<%=currentPage-1 %>">이전</a></li>
 			<%
 				}// 현재 페이지
 			%>
@@ -113,14 +113,14 @@
 				// 현재 페이지가 마지막 페이지보다 작을 시
 				if(currentPage < endPage){
 			%>
-					<li class="page-item"><a class="page-link" href="/mall-admin/category/updateCategory.jsp?categoryId=<%=categoryId %>&currentPage=<%=currentPage+1 %>">다음</a></li>
-					<li class="page-item"><a class="page-link" href="/mall-admin/category/updateCategory.jsp?categoryId=<%=categoryId %>&currentPage=<%=endPage %>">맨끝</a></li>
+					<li class="page-item"><a class="page-link" href="<%=request.getContextPath() %>/category/updateCategory.jsp?categoryId=<%=categoryId %>&currentPage=<%=currentPage+1 %>">다음</a></li>
+					<li class="page-item"><a class="page-link" href="<%=request.getContextPath() %>/category/updateCategory.jsp?categoryId=<%=categoryId %>&currentPage=<%=endPage %>">맨끝</a></li>
 			<%
 				// 현재 페이지가 마지막 페이지 일 시
 				}else{
 			%>
-					<li class="page-item disabled"><a class="page-link" href="/mall-admin/category/updateCategory.jsp?categoryId=<%=categoryId %>&currentPage=<%=currentPage+1 %>">다음</a></li>
-					<li class="page-item disabled"><a class="page-link" href="/mall-admin/category/updateCategory.jsp?categoryId=<%=categoryId %>&currentPage=<%=endPage %>">맨끝</a></li>
+					<li class="page-item disabled"><a class="page-link" href="<%=request.getContextPath() %>/category/updateCategory.jsp?categoryId=<%=categoryId %>&currentPage=<%=currentPage+1 %>">다음</a></li>
+					<li class="page-item disabled"><a class="page-link" href="<%=request.getContextPath() %>/category/updateCategory.jsp?categoryId=<%=categoryId %>&currentPage=<%=endPage %>">맨끝</a></li>
 			<%
 				}
 			%>	
@@ -129,7 +129,7 @@
 		<!-- 카테고리 리스트로 복귀 -->
 		<ul class="pagination">
 			<li class="page-item">
-				<a class="page-link" href="/mall-admin/category/categoryList.jsp">취소</a>
+				<a class="page-link" href="<%=request.getContextPath() %>/category/categoryList.jsp">취소</a>
 			</li>
 		</ul>
 	</div>

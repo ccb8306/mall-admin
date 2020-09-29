@@ -5,7 +5,7 @@
 <%@ page import="java.util.*" %>
 <%
 	if(session.getAttribute("loginAdminId") == null){
-		response.sendRedirect("/mall-admin/login.jsp");	
+		response.sendRedirect(request.getContextPath() + "/login.jsp");	
 		return;
 	}
 %>
@@ -50,12 +50,8 @@
 			ArrayList<Member> memberList = null;
 			
 			
-			// 검색 안할 시
-			if(searchOption.equals("") && searchMember.equals("")){
-				memberList = memberDao.selectMemberList(currentPage, rowPage);
-				endPage = memberDao.getMemberEndPage(rowPage);
 			// 이름 검색
-			}else if(searchOption.equals("name") && !searchMember.equals("")){
+			if(searchOption.equals("name") && !searchMember.equals("")){
 				memberList = memberDao.selectMemberListbyName(searchMember, currentPage, rowPage);
 				endPage = memberDao.getMemberEndPagebyName(searchMember, rowPage);		
 			// 이메일 검색
@@ -63,7 +59,11 @@
 				memberList = memberDao.selectMemberListbyEmail(searchMember, currentPage, rowPage);
 				endPage = memberDao.getMemberEndPagebyEmail(searchMember, rowPage);				
 			}
-			
+			// 검색 안할 시
+			else{
+				memberList = memberDao.selectMemberList(currentPage, rowPage);
+				endPage = memberDao.getMemberEndPage(rowPage);
+			}
 		%>
 
 		<!-- 공지사항 목록 헤드 -->

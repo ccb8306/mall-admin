@@ -5,7 +5,7 @@
 <%@ page import="java.util.*" %>
 <%
 	if(session.getAttribute("loginAdminId") == null){
-		response.sendRedirect("/mall-admin/login.jsp");	
+		response.sendRedirect(request.getContextPath() + "/login.jsp");	
 		return;
 	}
  %>
@@ -39,7 +39,7 @@
 		<table class="table table-secondary">
 			<tr><td><h3>주문 추가</h3></td></tr>
 		</table>	
-		<form action="/mall-admin/orders/addOrdersAction.jsp" method="post">
+		<form action="<%=request.getContextPath() %>/orders/addOrdersAction.jsp" method="post">
 			<table class="table table-bordered">
 				<tr>
 					<th style="width:20%">주문 상품 : </th>
@@ -92,7 +92,7 @@
 				</tr>
 			</table>
 			<ul class="pagination">
-				<li class="page-item"><a class="page-link" href="/mall-admin/orders/ordersList.jsp">목록</a></li>
+				<li class="page-item"><a class="page-link" href="<%=request.getContextPath() %>/orders/ordersList.jsp">목록</a></li>
 				<li class="page-item"><button class="btn btn-outline-primary" type="submit">주문 추가</button></li>
 			</ul>
 		</form>

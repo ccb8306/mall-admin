@@ -3,7 +3,7 @@
 <%@ page import="vo.*" %>
 <%
 	if(session.getAttribute("loginAdminId") == null){
-		response.sendRedirect("/mall-admin/login.jsp");	
+		response.sendRedirect(request.getContextPath() + "/login.jsp");	
 		return;
 	}
 	request.setCharacterEncoding("utf-8");
@@ -22,5 +22,5 @@
 	categoryDao.updateCategory(category);
 	
 	
-	response.sendRedirect("/mall-admin/category/categoryList.jsp");
+	response.sendRedirect(request.getContextPath() + "/category/categoryList.jsp");
 %>

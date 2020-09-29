@@ -5,7 +5,7 @@
 <%@ page import="java.util.*" %>
 <%
 	if(session.getAttribute("loginAdminId") == null){
-		response.sendRedirect("/mall-admin/login.jsp");	
+		response.sendRedirect(request.getContextPath() + "/login.jsp");
 		return;
 	}
 %>
@@ -66,11 +66,11 @@
 					<%
 						if(p.getProductSoldout().equals("Y")) {
 					%>
-						<a href="/mall-admin/product/modifyProductSoldoutAction.jsp?productId=<%=p.getProductId() %>&productSoldout=<%=p.getProductSoldout()%>">[품절]</a>
+						<a href="<%=request.getContextPath() %>/product/modifyProductSoldoutAction.jsp?productId=<%=p.getProductId() %>&productSoldout=<%=p.getProductSoldout()%>">[품절]</a>
 					<%
 						}else{
 					%>
-						<a href="/mall-admin/product/modifyProductSoldoutAction.jsp?productId=<%=p.getProductId() %>&productSoldout=<%=p.getProductSoldout()%>">[판매중]</a>
+						<a href="<%=request.getContextPath() %>/product/modifyProductSoldoutAction.jsp?productId=<%=p.getProductId() %>&productSoldout=<%=p.getProductSoldout()%>">[판매중]</a>
 					<%
 						}
 					%>
@@ -90,9 +90,9 @@
 		
 		<!-- 네비게이션 -->
 		<ul class="pagination">
-			<li class="page-item"><a class="page-link" href="/mall-admin/product/productList.jsp">목록</a></li>
-			<li class="page-item"><a class="page-link" href="/mall-admin/product/updateProduct.jsp?productId=<%=p.getProductId() %>">수정</a></li>
-			<li class="page-item"><a class="page-link" href="/mall-admin/product/deleteProductAction.jsp?productId=<%=p.getProductId() %>">삭제</a></li>
+			<li class="page-item"><a class="page-link" href="<%=request.getContextPath() %>/product/productList.jsp">목록</a></li>
+			<li class="page-item"><a class="page-link" href="<%=request.getContextPath() %>/product/updateProduct.jsp?productId=<%=p.getProductId() %>">수정</a></li>
+			<li class="page-item"><a class="page-link" href="<%=request.getContextPath() %>/product/deleteProductAction.jsp?productId=<%=p.getProductId() %>">삭제</a></li>
 		</ul>
 	</div>
 </body>

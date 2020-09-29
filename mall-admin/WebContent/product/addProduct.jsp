@@ -5,7 +5,7 @@
 <%@ page import="java.util.*" %>
 <%
 	if(session.getAttribute("loginAdminId") == null){
-		response.sendRedirect("/mall-admin/login.jsp");	
+		response.sendRedirect(request.getContextPath() + "/login.jsp");
 		return;
 	}
 %>
@@ -39,7 +39,7 @@
 		</table>
 		
 		<!-- 상품 추가 폼 -->
-		<form method="post" action="/mall-admin/product/addProductAction.jsp">
+		<form method="post" action="<%=request.getContextPath() %>/product/addProductAction.jsp">
 			<table class="table table-bordered">
 				<tr>
 					<th>상품명 : </th>
