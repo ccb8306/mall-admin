@@ -80,9 +80,6 @@
 					<th>category_img</th>
 					<th class="tdname">category_name</th>
 					<th>카테고리 추천</th>
-					<th>이름수정</th>
-					<th>사진수정</th>
-					<th>삭제</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -92,11 +89,8 @@
 						<tr>
 							<td><%=c.getCategoryId() %></td>
 							<td><img src="<%=request.getContextPath() %>/images/<%=c.getCategoryPic() %>" width="50px" height="50px" class="rounded-circle"></td>
-							<td class="tdname"><%=c.getCategoryName() %></td>
+							<td class="tdname"><a href="<%=request.getContextPath()%>/category/categoryOne.jsp?categoryId=<%=c.getCategoryId()%>"><%=c.getCategoryName() %></a></td>
 							<td><%=c.getCategoryCk() %></td>
-							<td><a href="<%=request.getContextPath() %>/category/updateCategory.jsp?categoryId=<%=c.getCategoryId()%>&currentPage=<%=currentPage%>">이름수정</a></td>
-							<td><a href="<%=request.getContextPath() %>/category/modifyCategoryPic.jsp?categoryId=<%=c.getCategoryId() %>">사진수정</a></td>
-							<td><a href="<%=request.getContextPath() %>/category/deleteCategoryAction.jsp?categoryId=<%=c.getCategoryId()%>">삭제</a></td>
 						</tr>
 				<%
 					}

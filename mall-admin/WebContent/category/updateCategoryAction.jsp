@@ -20,16 +20,18 @@
 	// 데이터 받기
 	String categoryId = request.getParameter("categoryId");
 	String categoryName = request.getParameter("categoryName");
+	String categoryCk = request.getParameter("categoryCk");
 	
 	// 받은 데이터를 Category클래스에 저장
 	Category category = new Category();
 	category.setCategoryId(Integer.parseInt(categoryId));
 	category.setCategoryName(categoryName);
+	category.setCategoryCk(categoryCk);
 	
 	// 수정 메서드 호출
 	CategoryDao categoryDao = new CategoryDao();
 	categoryDao.updateCategory(category);
 	
 	
-	response.sendRedirect(request.getContextPath() + "/category/categoryList.jsp");
+	response.sendRedirect(request.getContextPath() + "/category/categoryOne.jsp?categoryId=" + categoryId);
 %>

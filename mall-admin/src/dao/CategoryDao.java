@@ -19,15 +19,38 @@ public class CategoryDao {
 		
 	}
 	
-	// 카테고리 수정
+	// 카테고리 상세보기
+	public Category selectCategoryOne(int categoryId)throws Exception {
+		Category c = new Category();
+		DBUtil dbUtil = new DBUtil();
+		Connection conn = dbUtil.getConnection();	
+		
+		String sql = "select category_id, category_name, category_pic, category_ck from category where category_id=?";
+		PreparedStatement stmt = conn.prepareStatement(sql);
+		stmt.setInt(1, categoryId);
+		ResultSet rs = stmt.executeQuery();
+		
+		if(rs.next()) {
+			c.setCategoryId(rs.getInt("category_id"));
+			c.setCategoryName(rs.getString("category_name"));
+			c.setCategoryPic(rs.getNString("category_pic"));
+			c.setCategoryCk(rs.getString("category_ck"));
+		}
+		
+		conn.close();		
+		return c;
+	}
+	
+	// 카테고리 이름 수정
 	public void updateCategory(Category category) throws Exception {
 		DBUtil dbUtil = new DBUtil();
 		Connection conn = dbUtil.getConnection();	
 		
-		String sql = "update category set category_name=? where category_id=?";
+		String sql = "update category set category_name=?, category_ck=? where category_id=?";
 		PreparedStatement stmt = conn.prepareStatement(sql);
 		stmt.setString(1, category.getCategoryName());
-		stmt.setInt(2, category.getCategoryId());
+		stmt.setString(2, category.getCategoryCk());
+		stmt.setInt(3, category.getCategoryId());
 		stmt.executeUpdate();	
 		
 		conn.close();

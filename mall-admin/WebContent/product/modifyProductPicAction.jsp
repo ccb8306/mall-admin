@@ -17,13 +17,6 @@
 		response.sendRedirect(request.getContextPath() + "/login.jsp");
 		return;
 	}
-
-	/*
-	int productId = Integer.parseInt(request.getParameter("productId"));
-	String productPic = request.getParameter("productPic");
-	System.out.println(productId + "<--productId");
-	System.out.println(productPic + "<--productPic");
-	*/
 	
 	int size = 1024 * 1024 * 100; // 100MB - 최대 사이즈
 	String path = application.getRealPath("images"); // 이미지 폴더의 실제 위치
