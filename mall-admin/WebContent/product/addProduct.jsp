@@ -24,6 +24,28 @@
 <meta charset="UTF-8">
 <title>addProduct</title>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+<!-- jQuery -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<!-- java script -->
+<script>
+	$(document).ready(function(){ 
+		$("#btn").click(function() {
+			if($("#productName").val() < 1){
+				alert("상품명을 입력해 주세요.");
+				return;
+			}else if($("#productPrice").val().length < 1){
+				alert("가격을 입력해 주세요.");
+				return;
+			}else if($("#productContent").val().length < 1){
+				alert("내용을 입력해 주세요.");
+				return;
+			}
+			$("#addProductForm").submit();	
+		});
+	});
+</script>
 </head>
 <body>
 	<div class="container form-group">
@@ -49,15 +71,15 @@
 		</table>
 		
 		<!-- 상품 추가 폼 -->
-		<form method="post" action="<%=request.getContextPath() %>/product/addProductAction.jsp">
+		<form id="addProductForm" method="post" action="<%=request.getContextPath() %>/product/addProductAction.jsp">
 			<table class="table table-bordered">
 				<tr>
 					<th>상품명 : </th>
-					<td><input class="form-control" type="text" name="productName"></td>
+					<td><input id="productName" class="form-control" type="text" name="productName"></td>
 				</tr>
 				<tr>
 					<th>가격 : </th>
-					<td><input class="form-control" type="text" name="productPrice"></td>
+					<td><input id="productPrice" class="form-control" type="text" name="productPrice"></td>
 				</tr>
 				<tr>
 					<th>재고 : </th>
@@ -82,10 +104,10 @@
 				</tr>
 				<tr>
 					<th>내용 : </th>
-					<td><textarea name="productContent" class="form-control" cols="50" rows="10" id="comment" ></textarea></td>
+					<td><textarea id="productContent" name="productContent" class="form-control" cols="50" rows="10" id="comment" ></textarea></td>
 				</tr>
 			</table>
-			<button class="btn btn-outline-primary" type="submit">추가하기</button>
+			<button id="btn" class="btn btn-outline-primary" type="button">추가하기</button>
 		</form>
 	</div>
 </body>

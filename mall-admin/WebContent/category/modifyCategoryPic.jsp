@@ -22,6 +22,22 @@
 <meta charset="UTF-8">
 <title>modifyCategoryPic</title>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+<!-- jQuery -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<!-- java script -->
+<script>
+	$(document).ready(function(){ 
+		$("#btn").click(function() {
+			if($("#categoryPic").val().length < 1){
+				alert("사진을 선택해 주세요.");
+				return;
+			}
+			$("#modifyCategoryPicForm").submit();
+		});
+	});
+</script>
 </head>
 <body>
 	<div class="container form-group">
@@ -37,7 +53,7 @@
 		%>
 		
 		<!-- 이미지 수정 폼 -->
-		<form action="<%=request.getContextPath() %>/category/modifyCategoryPicAction.jsp" method="post" enctype="multipart/form-data">	
+		<form id="modifyCategoryPicForm" action="<%=request.getContextPath() %>/category/modifyCategoryPicAction.jsp" method="post" enctype="multipart/form-data">	
 			<input type="hidden" name="categoryId" value="<%=categoryId %>">
 			<table class="table">
 				<thead class="thead-light">
@@ -48,11 +64,11 @@
 				<tbody>
 					<tr>
 						<td style="width:15%">이미지 선택 : </td>
-						<td><input class="form-control-file border" type="file" name="categoryPic"></td>
+						<td><input id="categoryPic" class="form-control-file border" type="file" name="categoryPic"></td>
 					</tr>
 					<tr>
 						<td colspan="2">
-							<button class="btn btn-outline-primary" type="submit">수정완료</button>
+							<button id="btn" class="btn btn-outline-primary" type="button">수정완료</button>
 						</td>
 					</tr>
 				</tbody>

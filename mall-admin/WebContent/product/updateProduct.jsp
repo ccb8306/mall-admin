@@ -28,6 +28,28 @@
 	.thTitle{text-align:right}
 	.tdContent{width:80%}
 </style>
+
+<!-- jQuery -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<!-- java script -->
+<script>
+	$(document).ready(function(){ 
+		$("#btn").click(function() {
+			if($("#productName").val().length < 1){
+				alert("상품명을 입력해 주세요.");
+				return;
+			}else if($("#productPrice").val().length < 1){
+				alert("가격을 입력해 주세요.");
+				return;				
+			}else if($("#productContent").val().length < 1){
+				alert("내용을 입력해 주세요.");
+				return;				
+			}
+			$("#modifyProductPicForm").submit();
+		});
+	});
+</script>
 </head>
 <body>
 	<div class="container form-group">
@@ -59,15 +81,15 @@
 				<th><h3>상품 수정</h3></th>
 			</tr>
 		</table>
-		<form method="post" action="<%=request.getContextPath() %>/product/updateProductAction.jsp?productId=<%=productId%>">
+		<form id="updateProductForm" method="post" action="<%=request.getContextPath() %>/product/updateProductAction.jsp?productId=<%=productId%>">
 			<table class="table table-bordered">
 				<tr>
 					<th>상품명 : </th>
-					<td><input class="form-control" type="text" name="productName" value="<%=p.getProductName()%>"></td>
+					<td><input id="productName" class="form-control" type="text" name="productName" value="<%=p.getProductName()%>"></td>
 				</tr>
 				<tr>
 					<th>가격 : </th>
-					<td><input class="form-control" type="text" name="productPrice" value="<%=p.getProductPrice()%>"></td>
+					<td><input id="productPrice" class="form-control" type="text" name="productPrice" value="<%=p.getProductPrice()%>"></td>
 				</tr>
 				<tr>
 					<th>재고 : </th>
@@ -102,10 +124,10 @@
 				</tr>
 				<tr>
 					<th>내용 : </th>
-					<td><textarea name="productContent" class="form-control" cols="50" rows="10"><%=p.getProductContent()%></textarea></td>
+					<td><textarea id="productContent" name="productContent" class="form-control" cols="50" rows="10"><%=p.getProductContent()%></textarea></td>
 				</tr>
 			</table>
-			<button type="submit" class="btn btn-outline-primary">수정완료</button>
+			<button id="btn" type="button" class="btn btn-outline-primary">수정완료</button>
 		</form>
 	</div>
 </body>

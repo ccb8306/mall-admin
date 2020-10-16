@@ -6,6 +6,27 @@ import vo.*;
 import java.util.*;
 
 public class MemberDao {
+	// 회원 리스트 --> 페이징 x,검색 x
+	public ArrayList<Member> selectMemberList()throws Exception{
+		ArrayList<Member> list = new ArrayList<Member>();
+
+		DBUtil dbUtil = new DBUtil();	
+		Connection conn = dbUtil.getConnection();
+		String sql = "select member_email, member_name, member_date, member_state from member order by member_email asc";
+		PreparedStatement stmt = conn.prepareStatement(sql);
+		ResultSet rs = stmt.executeQuery();
+		
+		while(rs.next()) {
+			Member m = new Member();
+			m.setMemberEmail(rs.getString("member_email"));
+			m.setMemberName(rs.getString("member_name"));
+			m.setMemberDate(rs.getString("member_date"));
+			m.setMemberState(rs.getString("member_state"));
+			list.add(m);
+		}
+		
+		return list;
+	}
 	// 회원 리스트 --> 검색x
 	public ArrayList<Member> selectMemberList(int currentPage, int rowPage)throws Exception{
 		ArrayList<Member> list = new ArrayList<Member>();

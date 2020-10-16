@@ -24,6 +24,27 @@
 <meta charset="UTF-8">
 <title>addOrders</title>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+<!-- jQuery -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<!-- java script -->
+<script>
+	$(document).ready(function(){ 
+		$("#btn").click(function() {
+			if($("#ordersAmount").val() < 1){
+				alert("비정상적인 주문 개수입니다.");
+				return;
+			}else if($("#memberEmail").val() == "선택"){
+				alert("주문자를 선택해 주세요.");
+				return;
+			}else if($("#ordersAddr").val().length < 1){
+				alert("배송지를 입력해 주세요.");
+			}
+			$("#addOrdersForm").submit();
+		});
+	});
+</script>
 </head>
 <body>
 	<div class="container form-group">
@@ -42,13 +63,17 @@
 			// 주문 상태 리스트 
 			OrdersDao ordersDao = new OrdersDao();
 			ArrayList<String> stateList = ordersDao.selectOrdersStateList();
+			
+			// 주문자 리스트
+			MemberDao memberDao = new MemberDao();
+			ArrayList<Member> memberList = memberDao.selectMemberList();
 		%>
 		
 		<!-- 주문 내역 추가 폼 -->
 		<table class="table table-secondary">
 			<tr><td><h3>주문 추가</h3></td></tr>
 		</table>	
-		<form action="<%=request.getContextPath() %>/orders/addOrdersAction.jsp" method="post">
+		<form id="addOrdersForm" action="<%=request.getContextPath() %>/orders/addOrdersAction.jsp" method="post">
 			<table class="table table-bordered">
 				<tr>
 					<th style="width:20%">주문 상품 : </th>
@@ -73,15 +98,26 @@
 				</tr>
 				<tr>
 					<th>주문 개수 : </th>
-					<td><input type="text" name="ordersAmount" class="form-control"></td>
+					<td><input type="text" id="ordersAmount" name="ordersAmount" class="form-control"></td>
 				</tr>
 				<tr>
 					<th>주문자 이메일 : </th>
-					<td><input type="text" name="memberEmail" class="form-control"></td>
+					<td>
+						<select name="memberEmail" id="memberEmail" class="form-control">
+							<option>선택</option>
+							<%
+								for(Member m : memberList){
+							%>
+								<option value=<%=m.getMemberEmail() %>><%=m.getMemberEmail() %></option>
+							<%
+								}
+							%>
+						</select>
+					</td>
 				</tr>
 				<tr>
 					<th>배송지 : </th>
-					<td><input type="text" name="ordersAddr" class="form-control"></td>
+					<td><input type="text" id="ordersAddr" name="ordersAddr" class="form-control"></td>
 				</tr>
 				<tr>
 					<th>주문 상태 : </th>
@@ -102,7 +138,7 @@
 			</table>
 			<ul class="pagination">
 				<li class="page-item"><a class="page-link" href="<%=request.getContextPath() %>/orders/ordersList.jsp">목록</a></li>
-				<li class="page-item"><button class="btn btn-outline-primary" type="submit">주문 추가</button></li>
+				<li class="page-item"><button id="btn" class="btn btn-outline-primary" type="button">주문 추가</button></li>
 			</ul>
 		</form>
 	</div>

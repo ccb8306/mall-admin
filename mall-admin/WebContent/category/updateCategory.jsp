@@ -17,11 +17,27 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>updateCategory</title>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 <style>
 	.tdContent{width:80%}
 </style>
+
+<!-- jQuery -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<!-- java script -->
+<script>
+	$(document).ready(function(){ 
+		$("#btn").click(function() {
+			if($("#categoryName").val().length < 1){
+				alert("카테고리 이름을 입력해 주세요.");
+				return;
+			}
+			$("#updateCategoryForm").submit();
+		});
+	});
+</script>
 </head>
 <body>
 	<div class="container form-group">
@@ -60,12 +76,12 @@
 		<table class="table table-secondary">
 			<tr><td><h3>카테고리 수정</h3></td></tr>
 		</table>	
-		<form action="<%=request.getContextPath() %>/category/updateCategoryAction.jsp" method="post">
+		<form id="updateCategoryForm" action="<%=request.getContextPath() %>/category/updateCategoryAction.jsp" method="post">
 			<input type="hidden" name="categoryId" value=<%=c.getCategoryId() %>>
 			<table class="table table-bordered">
 				<tr>
 					<th>카테고리 이름 : </th>
-					<td class="tdContent"><input class="form-control" type="text" name="categoryName" value=<%=c.getCategoryName()%>></td>
+					<td class="tdContent"><input id="categoryName" class="form-control" type="text" name="categoryName" value=<%=c.getCategoryName()%>></td>
 				</tr>
 				<tr>
 					<th>추천 카테고리 여부 : </th>
@@ -90,7 +106,7 @@
 				<tr>
 				</tr>
 			</table>	
-			<button class="btn btn-outline-primary" type="submit">수정 완료</button>
+			<button id="btn" class="btn btn-outline-primary" type="button">수정 완료</button>
 		</form>
 	</div>
 </body>

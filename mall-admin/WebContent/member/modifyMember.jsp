@@ -31,6 +31,21 @@
 <style>
 	.tdContent{width:80%}
 </style>
+<!-- jQuery -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<!-- java script -->
+<script>
+	$(document).ready(function(){ 
+		$("#btn").click(function() {
+			if($("#memberName").val().length < 1){
+				alert("이름을 입력해 주세요.");
+				return;
+			}
+			$("#modifyMemberForm").submit();
+		});
+	});
+</script>
 </head>
 <body>
 	<div class="container form-group">
@@ -48,21 +63,21 @@
 			Member m = memberDao.selectMemberOne(memberEmail);
 			
 			// 회원 상태 변경 변수
-			String toggle = "";			
-			if(request.getParameter("toggle") != null){
-				toggle = request.getParameter("toggle");
-			}
+			String state = "";			
+			if(request.getParameter("state") != null){
+				state = request.getParameter("state");
 
-			// 변경 요청이 들어올 시 회원 상태 변경
-			if(toggle.equals("Y")){
-				m.setMemberState("N");
-			}else if(toggle.equals("N")){
-				m.setMemberState("Y");
-			}
+				// 변경 요청이 들어올 시 회원 상태 변경
+				if(state.equals("N")){
+					m.setMemberState("N");
+				}else if(state.equals("Y")){
+					m.setMemberState("Y");
+				}
+			}			
 			
 			// 디버깅
 			System.out.println(m.getMemberState() +"<--state");
-			System.out.println(toggle +"<--toggle");
+			System.out.println(state +"<--state");
 		%>
 		<br><br>
 		
@@ -72,7 +87,7 @@
 				<th><h3>회원 정보 수정</h3></th>
 			</tr>
 		</table>
-		<form method="post" action="<%=request.getContextPath() %>/member/modifyMemberAction.jsp">
+		<form id="modifyMemberForm" method="post" action="<%=request.getContextPath() %>/member/modifyMemberAction.jsp">
 			<table class="table table-bordered">
 				<tr>
 					<th>Email : </th>
@@ -80,7 +95,7 @@
 				</tr>
 				<tr>
 					<th>이름 : </th>
-					<td><input class="form-control" type="text" name="memberName" value="<%=m.getMemberName()%>"></td>
+					<td><input id="memberName" class="form-control" type="text" name="memberName" value="<%=m.getMemberName()%>"></td>
 				</tr>
 				<tr>
 					<th>가입일 : </th>
@@ -93,18 +108,18 @@
 						<%
 							if(m.getMemberState().equals("Y")){
 						%>
-							<a href="<%=request.getContextPath()%>/member/modifyMember.jsp?memberEmail=<%=m.getMemberEmail()%>&toggle=Y">활동중</a>
+							<a href="<%=request.getContextPath()%>/member/modifyMember.jsp?memberEmail=<%=m.getMemberEmail()%>&state=N">활동중</a>
 						<%
 							}else{
 						%>
-							<a href="<%=request.getContextPath()%>/member/modifyMember.jsp?memberEmail=<%=m.getMemberEmail()%>&toggle=N">탈퇴</a>
+							<a href="<%=request.getContextPath()%>/member/modifyMember.jsp?memberEmail=<%=m.getMemberEmail()%>&state=Y">탈퇴</a>
 						<%
 							}
 						%>
 					</td>
 				</tr>
 			</table>
-			<button type="submit" class="btn btn-outline-primary">수정완료</button>
+			<button id="btn" type="button" class="btn btn-outline-primary">수정완료</button>
 		</form>
 	</div>
 </body>

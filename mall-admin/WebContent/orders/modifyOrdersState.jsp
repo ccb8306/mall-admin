@@ -59,7 +59,7 @@
 		</table>	
 		
 		<!-- 주문상태 수정 폼 -->	
-		<form action="<%=request.getContextPath() %>/orders/modifyOrdersStateAction.jsp" method="post">
+		<form id="modifyOrdersStateForm" action="<%=request.getContextPath() %>/orders/modifyOrdersStateAction.jsp" method="post">
 			<table class="table table-bordered">
 				<tr>
 					<th>주문 ID : </th>

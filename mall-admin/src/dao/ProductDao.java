@@ -17,6 +17,7 @@ public class ProductDao {
 		
 		String sql = "select product_id, category_id, product_name, product_price, product_soldout from product";
 		PreparedStatement stmt = conn.prepareStatement(sql);
+		System.out.println(stmt + "<-- stmt");
 		ResultSet rs = stmt.executeQuery();
 		
 		while(rs.next()) {
@@ -45,6 +46,7 @@ public class ProductDao {
 		PreparedStatement stmt = conn.prepareStatement(sql);
 		stmt.setInt(1, (currentPage-1)*rowPage);
 		stmt.setInt(2, rowPage);
+		System.out.println(stmt + "<-- stmt");
 		ResultSet rs = stmt.executeQuery();
 
 		while(rs.next()) {
@@ -81,6 +83,7 @@ public class ProductDao {
 		stmt.setInt(2, (currentPage-1)*rowPage);
 		stmt.setInt(3, rowPage);
 
+		System.out.println(stmt + "<-- stmt");
 		ResultSet rs = stmt.executeQuery();
 
 		while(rs.next()) {
@@ -117,6 +120,7 @@ public class ProductDao {
 		stmt.setInt(2, (currentPage-1)*rowPage);
 		stmt.setInt(3, rowPage);
 
+		System.out.println(stmt + "<-- stmt");
 		ResultSet rs = stmt.executeQuery();
 		
 		while(rs.next()) {
@@ -151,6 +155,7 @@ public class ProductDao {
 		PreparedStatement stmt = conn.prepareStatement(sql);
 		stmt.setInt(1, productId);
 
+		System.out.println(stmt + "<-- stmt");
 		ResultSet rs = stmt.executeQuery();
 
 		if(rs.next()) {
@@ -174,12 +179,13 @@ public class ProductDao {
 		
 		String sql = "insert into product(category_Id, product_name, product_price, product_content, product_soldout) values(?,?,?,?,?)";
 		PreparedStatement stmt = conn.prepareStatement(sql);
-		stmt.setInt(1, p.getProductId());
+		stmt.setInt(1, p.getCategoryId());
 		stmt.setString(2, p.getProductName());
 		stmt.setInt(3, p.getProductPrice());
 		stmt.setString(4, p.getProductContent());
 		stmt.setString(5, p.getProductSoldout());
 		
+		System.out.println(stmt + "<-- stmt");
 		stmt.executeUpdate();
 
 		conn.close();
@@ -193,6 +199,7 @@ public class ProductDao {
 		String sql = "delete from product where product_id=?";
 		PreparedStatement stmt = conn.prepareStatement(sql);
 		stmt.setInt(1, productId);
+		System.out.println(stmt + "<-- stmt");
 		stmt.executeUpdate();
 
 		conn.close();
@@ -212,6 +219,7 @@ public class ProductDao {
 		stmt.setString(4, p.getProductContent());
 		stmt.setString(5, p.getProductSoldout());
 		stmt.setInt(6, p.getProductId());
+		System.out.println(stmt + "<-- stmt");
 		stmt.executeUpdate();
 		conn.close();
 	}

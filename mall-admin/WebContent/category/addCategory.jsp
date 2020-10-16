@@ -20,6 +20,21 @@
 <meta charset="utf-8">
 <title>addCategory</title>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<!-- jQuery -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<!-- java script -->
+<script>
+	$(document).ready(function(){ 
+		$("#btn").click(function() {
+			if($("#categoryName").val().length < 1){
+				alert("카테고리 이름을 입력해 주세요.");
+				return;
+			}
+			$("#addCategoryForm").submit();
+		});
+	});
+</script>
 </head>
 <body>
 	<div class="container">
@@ -35,11 +50,11 @@
 			</tr>
 			<tr>
 				<td>
-					<form method="post" action="/mall-admin/category/addCategoryAction.jsp">
+					<form id="addCategoryForm" method="post" action="/mall-admin/category/addCategoryAction.jsp">
 						<div class="input-group mb-3">	
-							<input type="text" name="categoryName" class="form-control"  placeholder="Category Name">
+							<input id="categoryName" type="text" name="categoryName" class="form-control"  placeholder="Category Name">
 							<div class="input-group-prepend">	
-								<button type="submit" class="btn btn-outline-warning">카테고리 추가</button>
+								<button id="btn" type="button" class="btn btn-outline-warning">카테고리 추가</button>
 							</div>
 						</div>
 					</form>

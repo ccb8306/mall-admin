@@ -28,6 +28,24 @@
 <style>
 	.tdContent{width:80%}
 </style>
+<!-- jQuery -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<!-- java script -->
+<script>
+	$(document).ready(function(){ 
+		$("#btn").click(function() {
+			if($("#noticeTitle").val().length < 1){
+				alert("제목을 작성해 주세요.");
+				return;
+			}else if($("#noticeContent").val().length < 1){
+				alert("내용을 작성해 주세요.");
+				return;
+			}
+			$("#addNoticeForm").submit();
+		});
+	});
+</script>
 </head>
 <body>
 	<div class="container form-group">
@@ -54,12 +72,12 @@
 				<th><h3>상품 수정</h3></th>
 			</tr>
 		</table>
-		<form method="post" action="<%=request.getContextPath() %>/notice/modifyNoticeAction.jsp">
+		<form id="addNoticeForm" method="post" action="<%=request.getContextPath() %>/notice/modifyNoticeAction.jsp">
 			<input type="hidden" name="noticeId" value="<%=n.getNoticeId()%>">
 			<table class="table table-bordered">
 				<tr>
 					<th>제목 : </th>
-					<td><input class="form-control" type="text" name="noticeTitle" value="<%=n.getNoticeTitle()%>"></td>
+					<td><input id="noticeTitle" class="form-control" type="text" name="noticeTitle" value="<%=n.getNoticeTitle()%>"></td>
 				</tr>
 				<tr>
 					<th>작성일 : </th>
@@ -67,10 +85,10 @@
 				</tr>
 				<tr>
 					<th>내용 : </th>
-					<td><textarea name="noticeContent" class="form-control" cols="50" rows="10"><%=n.getNoticeContent()%></textarea></td>
+					<td><textarea id="noticeContent" name="noticeContent" class="form-control" cols="50" rows="10"><%=n.getNoticeContent()%></textarea></td>
 				</tr>
 			</table>
-			<button type="submit" class="btn btn-outline-primary">수정완료</button>
+			<button id="btn" type="button" class="btn btn-outline-primary">수정완료</button>
 		</form>
 	</div>
 </body>
